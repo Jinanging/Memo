@@ -10,6 +10,8 @@
 #mybatis.mapper-locations=mappers/*Mapper.xml
 
 spring:
+  mvc: 
+    static-path-pattern: /static/**
   config:
     import: security-variables.yml
   datasource:
