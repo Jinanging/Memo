@@ -3,6 +3,7 @@ package com.jinanging.memo.user.service;
 import org.springframework.stereotype.Service;
 
 import com.jinanging.memo.common.MD5HashingEncoder;
+import com.jinanging.memo.user.domain.User;
 import com.jinanging.memo.user.repository.UserRepository;
 
 @Service
@@ -19,6 +20,19 @@ public class UserService {
 		this.userRepository = userRepository;
 		
 	}
+	
+	public User getUser(
+			String loginId
+			, String password) {
+		
+		String hashingPassword = MD5HashingEncoder.encode(password);
+		
+		
+		return userRepository.selectUser(loginId, hashingPassword);
+		
+	}
+	
+	
 	
 	
 	//사용자 추가 기능 
